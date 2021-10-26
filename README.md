@@ -4,6 +4,7 @@ Paper list of multi-agent reinforcement learning (MARL)
 - [Multi-Agent-RL](#multi-agent-rl)
   - [Credit Assignment Problem in MARL](#credit-assignment-problem-in-marl)
     - [Value Assignment](#value-assignment)
+      - [](#)
     - [Reward Assignment](#reward-assignment)
   - [Information Sharing in MARL](#information-sharing-in-marl)
     - [State Aggregation](#state-aggregation)
@@ -14,10 +15,14 @@ Paper list of multi-agent reinforcement learning (MARL)
 
 
 ## Credit Assignment Problem in MARL
-
+In the cooperative MARL setting, either global reward or individual reward is coupled with other agents. The Credit Assignment Problem is to assign proper reward or value to agents, so agents can make cooperative decisions individually.
 
 
 ### Value Assignment
+#### 
+
+
+
 ### Reward Assignment
 
 
