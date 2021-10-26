@@ -20,6 +20,15 @@ Paper list of multi-agent reinforcement learning (MARL)
   - [Planning in MARL](#planning-in-marl)
     - [Explicit planning](#explicit-planning)
     - [Implicit planning](#implicit-planning)
+- [Hierarchical Reinforcement Learning](#hierarchical-reinforcement-learning)
+  - [Goal-conditioned HRL](#goal-conditioned-hrl)
+  - [HAM](#ham)
+  - [UVFA](#uvfa)
+  - [FuN](#fun)
+  - [h-DQN](#h-dqn)
+  - [HER](#her)
+  - [HIRO](#hiro)
+  - [Language as an Abstraction](#language-as-an-abstraction)
 
 
 ## Credit Assignment Problem in MARL
@@ -83,8 +92,22 @@ In the cooperative MARL setting, either global reward or individual reward is co
 ### State & Action Aggregation
 
 
+
+
+
 ## Planning in MARL
 
 ### Explicit planning
 
 ### Implicit planning
+
+
+## Hierarchical Reinforcement Learning
+### Goal-conditioned HRL
+#### HAM
+#### UVFA
+#### FuN
+#### h-DQN
+#### HER
+#### HIRO
+#### Language as an Abstraction
