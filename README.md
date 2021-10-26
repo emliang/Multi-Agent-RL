@@ -3,13 +3,17 @@ Paper list of multi-agent reinforcement learning (MARL)
 
 - [Multi-Agent-RL](#multi-agent-rl)
   - [Credit Assignment Problem in MARL](#credit-assignment-problem-in-marl)
-    - [Value Assignment](#value-assignment)
-      - [MADDPG: Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments](#maddpg-multi-agent-actor-critic-for-mixed-cooperative-competitive-environments)
-      - [COMA: Counterfactual Multi-Agent Policy Gradients](#coma-counterfactual-multi-agent-policy-gradients)
-      - [Shapley Q-value: Shapley Q-value: A Local Reward Approach to Solve Global Reward Games](#shapley-q-value-shapley-q-value-a-local-reward-approach-to-solve-global-reward-games)
-      - [CollaQ: Multi-agent Collaboration via Reward Attribution Decomposition](#collaq-multi-agent-collaboration-via-reward-attribution-decomposition)
-      - [CPGs: Causal Policy Gradients](#cpgs-causal-policy-gradients)
-    - [Reward Assignment](#reward-assignment)
+    - [Explicit assignment](#explicit-assignment)
+      - [Value Assignment](#value-assignment)
+        - [MADDPG: Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments](#maddpg-multi-agent-actor-critic-for-mixed-cooperative-competitive-environments)
+        - [COMA: Counterfactual Multi-Agent Policy Gradients](#coma-counterfactual-multi-agent-policy-gradients)
+        - [Shapley Q-value: Shapley Q-value: A Local Reward Approach to Solve Global Reward Games](#shapley-q-value-shapley-q-value-a-local-reward-approach-to-solve-global-reward-games)
+        - [CollaQ: Multi-agent Collaboration via Reward Attribution Decomposition](#collaq-multi-agent-collaboration-via-reward-attribution-decomposition)
+        - [CPGs: Causal Policy Gradients](#cpgs-causal-policy-gradients)
+      - [Reward Assignment](#reward-assignment)
+    - [Implicit assignment](#implicit-assignment)
+      - [Value Decomposition](#value-decomposition)
+      - [Reward shaping](#reward-shaping)
   - [Information Sharing in MARL](#information-sharing-in-marl)
     - [State Aggregation](#state-aggregation)
     - [State & Action Aggregation](#state--action-aggregation)
@@ -49,16 +53,27 @@ In the cooperative MARL setting, either global reward or individual reward is co
             2. the potential function is as:
          4. The Weighted Shapley Value: $f_{r}^{\mathrm{WSV}}(i, S):=\sum_{T \subseteq S: i \in T} \frac{w_{i}}{\sum_{j \in T} w_{j}}\left(\sum_{R \subseteq T}(-1)^{|T|-|R|} W_{r}(R)\right)$
 
-### Value Assignment
-#### MADDPG: Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments
-#### COMA: Counterfactual Multi-Agent Policy Gradients
-#### Shapley Q-value: Shapley Q-value: A Local Reward Approach to Solve Global Reward Games
-#### CollaQ: Multi-agent Collaboration via Reward Attribution Decomposition
-#### CPGs: Causal Policy Gradients
+### Explicit assignment
+
+#### Value Assignment
+##### MADDPG: Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments
+##### COMA: Counterfactual Multi-Agent Policy Gradients
+##### Shapley Q-value: Shapley Q-value: A Local Reward Approach to Solve Global Reward Games
+##### CollaQ: Multi-agent Collaboration via Reward Attribution Decomposition
+##### CPGs: Causal Policy Gradients
+
+#### Reward Assignment
+
+
+### Implicit assignment
+
+#### Value Decomposition
+
+#### Reward shaping
 
 
 
-### Reward Assignment
+
 
 
 
