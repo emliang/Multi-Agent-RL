@@ -7,6 +7,12 @@ Paper list of multi-agent reinforcement learning (MARL)
       - [Reward Assignment](#reward-assignment)
         - [Distributed Welfare Games](#distributed-welfare-games)
         - [Difference Rewards Policy Gradients](#difference-rewards-policy-gradients)
+        - [Social Influence as Intrinsic Motivation](#social-influence-as-intrinsic-motivation)
+        - [Incentivizing Collaboration in a Competition](#incentivizing-collaboration-in-a-competition)
+        - [Social Diversity and Social Preferences in Mixed-Motive Reinforcement Learning](#social-diversity-and-social-preferences-in-mixed-motive-reinforcement-learning)
+        - [Inducing Cooperation through Reward Reshaping based on Peer Evaluations](#inducing-cooperation-through-reward-reshaping-based-on-peer-evaluations)
+        - [Gifting in Multi-Agent Reinforcement Learning](#gifting-in-multi-agent-reinforcement-learning)
+        - [Cooperation and Reputation Dynamics with Reinforcement Learning](#cooperation-and-reputation-dynamics-with-reinforcement-learning)
       - [Value Assignment](#value-assignment)
         - [MADDPG: Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments](#maddpg-multi-agent-actor-critic-for-mixed-cooperative-competitive-environments)
         - [COMA: Counterfactual Multi-Agent Policy Gradients](#coma-counterfactual-multi-agent-policy-gradients)
@@ -24,21 +30,23 @@ Paper list of multi-agent reinforcement learning (MARL)
         - [Adaptive Mechanism Design: Learning to Promote Cooperation](#adaptive-mechanism-design-learning-to-promote-cooperation)
         - [Learning to Incentivize Other Learning Agents](#learning-to-incentivize-other-learning-agents)
         - [Learning to Share in Multi-Agent Reinforcement Learning](#learning-to-share-in-multi-agent-reinforcement-learning)
+        - [Inducing Desirable Equilibria in Non-Cooperative Systems](#inducing-desirable-equilibria-in-non-cooperative-systems)
+        - [D3C: Reducing the Price of Anarchy in Multi-Agent Learning](#d3c-reducing-the-price-of-anarchy-in-multi-agent-learning)
   - [Information Sharing in MARL](#information-sharing-in-marl)
     - [State Aggregation](#state-aggregation)
     - [State & Action Aggregation](#state--action-aggregation)
   - [Planning in MARL](#planning-in-marl)
     - [Explicit planning](#explicit-planning)
     - [Implicit planning](#implicit-planning)
-- [Hierarchical Reinforcement Learning](#hierarchical-reinforcement-learning)
-  - [Goal-conditioned HRL](#goal-conditioned-hrl)
-  - [HAM](#ham)
-  - [UVFA](#uvfa)
-  - [FuN](#fun)
-  - [h-DQN](#h-dqn)
-  - [HER](#her)
-  - [HIRO](#hiro)
-  - [Language as an Abstraction](#language-as-an-abstraction)
+  - [Hierarchical Reinforcement Learning](#hierarchical-reinforcement-learning)
+    - [Goal-conditioned HRL](#goal-conditioned-hrl)
+      - [HAM](#ham)
+      - [UVFA](#uvfa)
+      - [FuN](#fun)
+      - [h-DQN](#h-dqn)
+      - [HER](#her)
+      - [HIRO](#hiro)
+      - [Language as an Abstraction](#language-as-an-abstraction)
 
 
 ## Credit Assignment Problem in MARL
@@ -69,6 +77,19 @@ Global reward -> (explicit calculation) -> local reward
 ##### Difference Rewards Policy Gradients
    1. counterfactual reward![](2021-10-26-20-27-50.png)
    2. difference return![](2021-10-26-20-28-15.png)
+
+##### Social Influence as Intrinsic Motivation
+
+##### Incentivizing Collaboration in a Competition
+
+##### Social Diversity and Social Preferences in Mixed-Motive Reinforcement Learning
+
+##### Inducing Cooperation through Reward Reshaping based on Peer Evaluations
+
+##### Gifting in Multi-Agent Reinforcement Learning
+
+##### Cooperation and Reputation Dynamics with Reinforcement Learning
+
 
 #### Value Assignment
 Global Q value -> (explicit calculation) -> local Q value
@@ -122,8 +143,8 @@ IGM: individual-global-maximization
 
 
 #### Reward shaping
-Shaping individual reward -> (bi-level optimization) -> maximize real env-reward
-
+Shaping individual reward -> maximize real env-reward
+Learning shaping strategy through optimization (bi-level, black-box, ...)
 ##### LIIR: Learning Individual Intrinsic Reward in Multi-Agent Reinforcement Learning
 
 ##### Adaptive Mechanism Design: Learning to Promote Cooperation
@@ -132,7 +153,9 @@ Shaping individual reward -> (bi-level optimization) -> maximize real env-reward
 
 ##### Learning to Share in Multi-Agent Reinforcement Learning
 
+##### Inducing Desirable Equilibria in Non-Cooperative Systems
 
+##### D3C: Reducing the Price of Anarchy in Multi-Agent Learning
 
 
 
