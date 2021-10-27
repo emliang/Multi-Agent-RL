@@ -18,7 +18,7 @@ Paper list of multi-agent reinforcement learning (MARL)
         - [COMA: Counterfactual Multi-Agent Policy Gradients](#coma-counterfactual-multi-agent-policy-gradients)
         - [Shapley Q-value: Shapley Q-value: A Local Reward Approach to Solve Global Reward Games](#shapley-q-value-shapley-q-value-a-local-reward-approach-to-solve-global-reward-games)
         - [CPGs: Causal Policy Gradients](#cpgs-causal-policy-gradients)
-    - [Implicit assignment](#implicit-assignment)
+    - [Learning assignment](#learning-assignment)
       - [Value Decomposition](#value-decomposition)
         - [VDN: Value-Decomposition Networks For Cooperative Multi-Agent Learning](#vdn-value-decomposition-networks-for-cooperative-multi-agent-learning)
         - [QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning](#qmix-monotonic-value-function-factorisation-for-deep-multi-agent-reinforcement-learning)
@@ -76,21 +76,50 @@ Global reward -> (explicit calculation) -> local reward
       3. Shapley Value
       4. The Weighted Shapley Value
 ##### Difference Rewards Policy Gradients
-   1. counterfactual reward![](2021-10-26-20-27-50.png)
-   2. difference return![](2021-10-26-20-28-15.png)
+   1. global reward setting
+      1. counterfactual reward![](2021-10-26-20-27-50.png)
+      2. difference return![](2021-10-26-20-28-15.png)
 
 ##### Social Influence as Intrinsic Motivation
+   1. individual reward design
+![](2021-10-27-14-51-05.png)
+      1. extrinsic reward
+      2. social influence
+         1. measure the cause influence between two agents
+         2. KL divergence of policy of one agent with/o anther agent
+![](2021-10-27-14-52-47.png)
+
 
 ##### Incentivizing Collaboration in a Competition
+   1. individual reward design (local social welfare)
+![](2021-10-27-15-00-34.png)
+      1. this utility induce NE that maximize social welfare.
+         1. potential function is the global social welfare
 
 ##### Social Diversity and Social Preferences in Mixed-Motive Reinforcement Learning
+   1. individual reward design
+      1. consider willingness of cooperation![](2021-10-27-15-02-37.png)
+      2. social value orientation![](2021-10-27-15-03-17.png)
+
 
 ##### Inducing Cooperation through Reward Reshaping based on Peer Evaluations
+   1. individual reward design
+      1. peer Evaluation: a quantification of the effect of the joint actions on agent 𝑘’s expected reward ![](2021-10-27-15-06-37.png)
+      2. evaluation form others![](2021-10-27-15-11-49.png)
+      3. final reward![](2021-10-27-15-12-17.png)
+
 
 ##### Gifting in Multi-Agent Reinforcement Learning
+   1. individual reward design
+      1. zero-sum: give by accumulated reward
+      2. fixed budget: given fixed at the start 
+      3. Replenishable Budget: accumulated, proportional to received reward
 
 ##### Cooperation and Reputation Dynamics with Reinforcement Learning
-
+   1. individual reward design
+   ![](2021-10-27-15-23-19.png)
+      1. 𝑈 is their payoff in a particular encounter,
+      2. 𝑆 refers to the payoff they would get facing themselves
 
 #### Value Assignment
 Global Q value -> (explicit calculation) -> local Q value
@@ -112,7 +141,7 @@ Global Q value -> (explicit calculation) -> local Q value
 
 
 
-### Implicit assignment
+### Learning assignment
 
 #### Value Decomposition
 Global Q value -> (learning decomposition) -> Local Q value
