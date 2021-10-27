@@ -26,11 +26,12 @@ Paper list of multi-agent reinforcement learning (MARL)
         - [LICA: Learning Implicit Credit Assignment for Cooperative Multi-Agent Reinforcement Learning](#lica-learning-implicit-credit-assignment-for-cooperative-multi-agent-reinforcement-learning)
         - [CollaQ: Multi-agent Collaboration via Reward Attribution Decomposition](#collaq-multi-agent-collaboration-via-reward-attribution-decomposition)
       - [Reward shaping](#reward-shaping)
+        - [On Learning Intrinsic Rewards for Policy Gradient Methods](#on-learning-intrinsic-rewards-for-policy-gradient-methods)
         - [LIIR: Learning Individual Intrinsic Reward in Multi-Agent Reinforcement Learning](#liir-learning-individual-intrinsic-reward-in-multi-agent-reinforcement-learning)
         - [Adaptive Mechanism Design: Learning to Promote Cooperation](#adaptive-mechanism-design-learning-to-promote-cooperation)
         - [Learning to Incentivize Other Learning Agents](#learning-to-incentivize-other-learning-agents)
         - [Learning to Share in Multi-Agent Reinforcement Learning](#learning-to-share-in-multi-agent-reinforcement-learning)
-        - [Inducing Desirable Equilibria in Non-Cooperative Systems](#inducing-desirable-equilibria-in-non-cooperative-systems)
+        - [Coordinating the Crowd: Inducing Desirable Equilibria in Non-Cooperative Systems](#coordinating-the-crowd-inducing-desirable-equilibria-in-non-cooperative-systems)
         - [D3C: Reducing the Price of Anarchy in Multi-Agent Learning](#d3c-reducing-the-price-of-anarchy-in-multi-agent-learning)
   - [Information Sharing in MARL](#information-sharing-in-marl)
     - [State Aggregation](#state-aggregation)
@@ -144,19 +145,71 @@ IGM: individual-global-maximization
 
 #### Reward shaping
 Shaping individual reward -> maximize real env-reward
-Learning shaping strategy through optimization (bi-level, black-box, ...)
-##### LIIR: Learning Individual Intrinsic Reward in Multi-Agent Reinforcement Learning
+Learning shaping strategy through optimization (bi-level, black-box, evolutionary,...)
+##### On Learning Intrinsic Rewards for Policy Gradient Methods
+   1. optimal reward
+      1. reward function maximizing extrinsic environment reward
+   2. Gradient-based learning
+      1. use total reward to update policy parameters:
+![](2021-10-27-11-14-41.png)
+      1. update Intrinsic reward use updated policy parameters 
+    ![](2021-10-27-11-16-11.png)
+         1. extrinsic reward policy gradient![](2021-10-27-11-20-16.png)
+         2. chain rules + approximating second terms
+![](2021-10-27-11-20-04.png)
 
+##### LIIR: Learning Individual Intrinsic Reward in Multi-Agent Reinforcement Learning
+   1. adopt intrinsic reward in multi-agent setting (global env reward)
+      1. maximize total env reward through individual intrinsic reward-based policy![](2021-10-27-11-23-13.png)
+   2. Gradient
+      1. update policy using prox reward (in + ex)![](2021-10-27-12-04-15.png)
+      2. update intrinsic reward![](2021-10-27-12-07-33.png)
+         1. first term![](2021-10-27-12-07-43.png)
+         2. second term![](2021-10-27-12-07-54.png)
 ##### Adaptive Mechanism Design: Learning to Promote Cooperation
+   1. similar as LIIR
+![](2021-10-27-13-50-36.png)
 
 ##### Learning to Incentivize Other Learning Agents
+   1. intrinsic reward comes from other agents (has individual env reward)
+      1. not budget balance
+![](2021-10-27-13-51-22.png)
+   2. gradient
+      1. update individual policy
+![](2021-10-27-13-52-26.png)
+      2. update intrinsic (incentive) reward:
+         1. maximize individual env reward: (not budget balance)
+   ![](2021-10-27-13-54-09.png)
+         1. the same as LIIR
+
 
 ##### Learning to Share in Multi-Agent Reinforcement Learning
+   1. intrinsic reward comes from other agents (has individual env reward)
+      1. generate proportion of assignment reward $w_{ji}$
+      2.  budget balance![](2021-10-27-13-56-55.png)
+   2. gradient
+      1. bi-level learning![](2021-10-27-13-58-27.png)
+         1. update policy based on assigned reward
+         2. update weight generator
 
-##### Inducing Desirable Equilibria in Non-Cooperative Systems
+
+##### Coordinating the Crowd: Inducing Desirable Equilibria in Non-Cooperative Systems
+   1. intrinsic reward
+![](2021-10-27-14-12-18.png)
+      1. treat agent learning process with intrinsic reward as black-box
+      2. use bayesian optimization to optimize intrinsic reward
+          ![](2021-10-27-14-12-56.png)
+         1. different with LIIR, with penalty terms
+
 
 ##### D3C: Reducing the Price of Anarchy in Multi-Agent Learning
-
+   1. intrinsic reward
+![](2021-10-27-14-15-18.png)
+      1. f': linear combination of reward from other agents
+      2. minimize the divergence of assignment matrix
+   1. objective
+      1. Local Price of Anarchy
+      2. approximating its upper bound
 
 
 ## Information Sharing in MARL
