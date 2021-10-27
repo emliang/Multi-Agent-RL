@@ -18,6 +18,7 @@ Paper list of multi-agent reinforcement learning (MARL)
         - [COMA: Counterfactual Multi-Agent Policy Gradients](#coma-counterfactual-multi-agent-policy-gradients)
         - [Shapley Q-value: Shapley Q-value: A Local Reward Approach to Solve Global Reward Games](#shapley-q-value-shapley-q-value-a-local-reward-approach-to-solve-global-reward-games)
         - [CPGs: Causal Policy Gradients](#cpgs-causal-policy-gradients)
+        - [Shapley Counterfactual Credits for Multi-Agent Reinforcement Learning](#shapley-counterfactual-credits-for-multi-agent-reinforcement-learning)
     - [Learning assignment](#learning-assignment)
       - [Value Decomposition](#value-decomposition)
         - [VDN: Value-Decomposition Networks For Cooperative Multi-Agent Learning](#vdn-value-decomposition-networks-for-cooperative-multi-agent-learning)
@@ -136,7 +137,10 @@ Global Q value -> (explicit calculation) -> local Q value
       1. consider causal graph between actions and objectives
       2. causal baseline![](pic/2021-10-26-20-12-53.png)
 
-
+##### Shapley Counterfactual Credits for Multi-Agent Reinforcement Learning
+   1. counterfactual baseline (using default action)
+  ![](pic/2021-10-27-15-48-04.png)
+   2. sample approximation ![](pic/2021-10-27-15-48-46.png)
 
 
 
