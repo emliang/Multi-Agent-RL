@@ -35,7 +35,12 @@ Paper list of multi-agent reinforcement learning (MARL)
         - [Coordinating the Crowd: Inducing Desirable Equilibria in Non-Cooperative Systems](#coordinating-the-crowd-inducing-desirable-equilibria-in-non-cooperative-systems)
         - [D3C: Reducing the Price of Anarchy in Multi-Agent Learning](#d3c-reducing-the-price-of-anarchy-in-multi-agent-learning)
   - [Information Sharing in MARL](#information-sharing-in-marl)
-    - [State Aggregation](#state-aggregation)
+    - [Centralized Critic with Global Information](#centralized-critic-with-global-information)
+      - [State -> Action](#state---action)
+        - [MADDPG: Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments](#maddpg-multi-agent-actor-critic-for-mixed-cooperative-competitive-environments-1)
+        - [](#)
+    - [Local Critic with Neighbor Information](#local-critic-with-neighbor-information)
+      - [](#-1)
     - [State & Action Aggregation](#state--action-aggregation)
   - [Planning in MARL](#planning-in-marl)
     - [Explicit planning](#explicit-planning)
@@ -247,7 +252,21 @@ Learning shaping strategy through optimization (bi-level, black-box, evolutionar
 
 ## Information Sharing in MARL
 
-### State Aggregation
+
+### Centralized Critic with Global Information
+
+#### State -> Action
+
+##### MADDPG: Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments
+ 
+##### 
+
+
+
+### Local Critic with Neighbor Information
+
+#### 
+
 ### State & Action Aggregation
 
 
