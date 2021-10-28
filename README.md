@@ -35,13 +35,14 @@ Paper list of multi-agent reinforcement learning (MARL)
         - [Coordinating the Crowd: Inducing Desirable Equilibria in Non-Cooperative Systems](#coordinating-the-crowd-inducing-desirable-equilibria-in-non-cooperative-systems)
         - [D3C: Reducing the Price of Anarchy in Multi-Agent Learning](#d3c-reducing-the-price-of-anarchy-in-multi-agent-learning)
   - [Information Sharing in MARL](#information-sharing-in-marl)
-    - [Centralized Critic with Global Information](#centralized-critic-with-global-information)
-      - [State -> Action](#state---action)
+    - [Central Critic](#central-critic)
+      - [Lower level sharing](#lower-level-sharing)
         - [MADDPG: Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments](#maddpg-multi-agent-actor-critic-for-mixed-cooperative-competitive-environments-1)
-        - [](#)
-    - [Local Critic with Neighbor Information](#local-critic-with-neighbor-information)
-      - [](#-1)
-    - [State & Action Aggregation](#state--action-aggregation)
+        - [BiCNet: Multiagent Bidirectionally-Coordinated Nets](#bicnet-multiagent-bidirectionally-coordinated-nets)
+      - [Higher level sharing](#higher-level-sharing)
+    - [Local Critic](#local-critic)
+      - [Lower level sharing](#lower-level-sharing-1)
+      - [Higher level sharing](#higher-level-sharing-1)
   - [Planning in MARL](#planning-in-marl)
     - [Explicit planning](#explicit-planning)
     - [Implicit planning](#implicit-planning)
@@ -253,21 +254,29 @@ Learning shaping strategy through optimization (bi-level, black-box, evolutionar
 ## Information Sharing in MARL
 
 
-### Centralized Critic with Global Information
+### Central Critic
 
-#### State -> Action
+#### Lower level sharing
 
 ##### MADDPG: Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments
- 
-##### 
+1. adopt fully connected neural network to process all information
+   
+##### BiCNet: Multiagent Bidirectionally-Coordinated Nets
+Emergence of Human-level Coordination in Learning to Play StarCraft Combat Games
+1. adopt 
+
+
+#### Higher level sharing
 
 
 
-### Local Critic with Neighbor Information
+### Local Critic
 
-#### 
+#### Lower level sharing
 
-### State & Action Aggregation
+#### Higher level sharing
+
+
 
 
 
