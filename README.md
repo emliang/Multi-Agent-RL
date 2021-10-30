@@ -48,6 +48,7 @@ Paper list of multi-agent reinforcement learning (MARL)
     - [Implicit planning](#implicit-planning)
   - [Hierarchical Reinforcement Learning](#hierarchical-reinforcement-learning)
     - [Goal-conditioned HRL](#goal-conditioned-hrl)
+      - [Feudal Reinforcement Learning](#feudal-reinforcement-learning)
       - [HAM](#ham)
       - [UVFA](#uvfa)
       - [FuN](#fun)
@@ -291,10 +292,84 @@ Emergence of Human-level Coordination in Learning to Play StarCraft Combat Games
 
 ## Hierarchical Reinforcement Learning
 ### Goal-conditioned HRL
-#### HAM
-#### UVFA
-#### FuN
-#### h-DQN
-#### HER
-#### HIRO
-#### Language as an Abstraction
+#### Feudal Reinforcement Learning
+1. <b>Feudal Reinforcement Learning(1992)</b>
+   - **Reward Hidding:**  Managers must reward sub-managers for doing their bidding whether or not this satisfies the commands of the super-managers
+   - **Information Hidding:** Managers only need to know the state of the system at the granularity of their own choices of tasks
+  ![](2021-03-24-15-56-45.png){:height="100px" width="400px"}
+2. <b>Reinforcement Learning with Hierarchies of Machines(1998)</b>
+   - **Motivation:** (a) the policies learning process are constrained by hierarchies of partially specified machines(reduce search space). (b)  knowledge can be transferred across problems and in which component solutionscan be recombined to solve larger and more complicated problems
+   ![](2021-03-25-11-44-24.png)
+3. <b>Universal Value Function Approximators(2015, David Silver)</b>
+   -**Universal value function** The pseudo-discount γg takes the double role of statedependent discounting, and of soft termination, in the sense that γ(s) = 0 if and only if s is a terminal state according to goal g 
+   $$V_{g, \pi}(s):=\mathbb{E}\left[\sum_{t=0}^{\infty} R_{g}\left(s_{t+1}, a_{t}, s_{t}\right) \prod_{k=0}^{t} \gamma_{g}\left(s_{k}\right) \mid s_{0}=s\right]$$
+   $$Q_{g, \pi}(s, a):=\mathbb{E}_{s^{\prime}}\left[R_{g}\left(s, a, s^{\prime}\right)+\gamma_{g}\left(s^{\prime}\right) \cdot V_{g, \pi}\left(s^{\prime}\right)\right]$$
+   -**Function Approximation Architecture**
+
+   ![](2021-03-26-13-11-38.png)
+   ![](2021-03-26-14-16-28.png)
+4. <b>FeUdal Networks for Hierarchical Reinforcement Learning(2017, David Silver)</b>
+   - **Motivation** (1) long timescale credit assignment (2) encourage the emergence of sub-policies associated with different goals set by manager (3) end-to-end HRL
+   ![](2021-03-25-18-51-23.png)
+   - **Goal Embedding** The manager internally computes a latent state representation $s_t$ and output a goal vector $g_t$ 
+   - **Manager Learning**
+   $$z_{t}=f^{\text {percept }}\left(x_{t}\right)$$
+$$s_{t}=f^{\text {Mspace }}\left(z_{t}\right)$$
+$$h_{t}^{M}, \hat{g}_{t}=f^{M r n n}\left(s_{t}, h_{t-1}^{M}\right) ; g_{t}=\hat{g}_{t} /\left\|\hat{g}_{t}\right\| ;$$
+$$h^{W}, U_{t}=f^{W r n n}\left(z_{t}, h_{t-1}^{W}\right)$$
+$$\pi_{t}=\operatorname{SoftMax}\left(U_{t} w_{t}\right)$$
+   - **Manager Learning**
+   $$\nabla_{\theta} \pi_{t}^{T P}=\mathbb{E}\left[\left(R_{t}-V\left(s_{t}\right)\right) \nabla_{\theta} \log p\left(s_{t+c} \mid s_{t}, \mu\left(s_{t}, \theta\right)\right)\right]$$
+   $$p\left(s_{t+c} \mid s_{t}, g_{t}\right) \propto e^{d_{\cos }\left(s_{t+c}-s_{t}, g_{t}\right)}$$
+   $$\nabla_{\theta} \pi_{t}^{T P}=\mathbb{E}\left[\left(R_{t}-V\left(s_{t}\right)\right) \nabla_{\theta} \log p\left(s_{t+c} \mid s_{t}, \mu\left(s_{t}, \theta\right)\right)\right]$$
+   - **Intrisic Reward** In practice we take a softer approach by adding an intrinsic reward for following the goals, but retaining the environment reward as well
+   $$r_{t}^{I}=1 / c \sum_{i=1}^{c} d_{\cos }\left(s_{t}-s_{t-i}, g_{t-i}\right)$$
+   - **Worker Learning**
+   $$\nabla \pi_{t}=A_{t}^{D} \nabla_{\theta} \log \pi\left(a_{t} \mid x_{t} ; \theta\right)$$
+   $$A_{t}^{D}=\left(R_{t}+\alpha R_{t}^{I}-V_{t}^{D}\left(x_{t} ; \theta\right)\right)$$
+   
+5. <b>Hierarchical Deep Reinforcement Learning : Integrating Temporal Abstraction andIntrinsic Motivation(2017)</b>
+   - **Problem**: sparse reward resulting in insufficient exploration
+   - **Motivation**: intrinsically motivated agents to explore new behavior for their own sake rather than directly solve the extenal goals
+   - **Method**: hierarchical reinforcement learning with intrinsic reward
+   ![](2021-03-24-12-46-17.png)
+   ![](2021-03-24-12-47-04.png)
+   - Meta-controller: The objective of meta-controller is to maximize the extrinsic reward received $F_{t}=\sum_{t^{\prime}=t}^{\infty} \gamma^{t^{\prime}-t} f_{t^{\prime}}$ from environment and the state-action value function is:
+   $Q_{2}^{*}(s, g)=\max _{\pi_{g}} \mathrm{E}\left[\sum_{t^{\prime}=t}^{t+N} f_{t^{\prime}}+\gamma \max _{g^{\prime}} Q_{2}^{*}\left(s_{t+N}, g^{\prime}\right) \mid s_{t}=s, g_{t}=g, \pi_{g}\right]$
+   - Controller: The objective of controller is to maximize the intrinsic reward $R_{t}(g)=\sum_{t^{\prime}=t}^{\infty} \gamma^{t^{\prime}-t} r_{t^{\prime}}(g)$ and the state-action value function is:
+   $\begin{aligned} Q_{1}^{*}(s, a ; g) &=\max _{\pi_{a g}} \mathrm{E}\left[\sum_{t^{\prime}=t}^{\infty} \gamma^{t^{\prime}-t} r_{t^{\prime}} \mid s_{t}=s, a_{t}=a, g_{t}=g, \pi_{a g}\right] \\ &=\max _{\pi_{a g}} \mathrm{E}\left[r_{t}+\gamma \max _{a_{t+1}} Q_{1}^{*}\left(s_{t+1}, a_{t+1} ; g\right) \mid s_{t}=s, a_{t}=a, g_{t}=g, \pi_{a g}\right] \end{aligned}$
+   
+6. <b>Hindsight Experience Replay</b>
+   -**Motivation** (1)The pivotal idea behind HER is to replay each episode with a **different** goal than the one the agent was trying to achieve, e.g. one of the goals which was achieved in the episode.
+   ![](2021-03-26-19-38-37.png)
+7. <b>Data-Efficient Hierarchical Reinforcement Learning</b>
+   - **Challenge** Non-stationary off-policy training between high-level controller and low-leverl controller
+   - **Low-level reward**
+   $$r\left(s_{t}, g_{t}, a_{t}, s_{t+1}\right)=-\left\|s_{t}+g_{t}-s_{t+1}\right\|_{2}$$
+   - **Off-Policy Corrections for Higher-Level Training** Fixed low-level transition, re-label a high-level goal $\tilde{g}_{t}$
+   $$\log \mu^{l o}\left(a_{t: t+c-1} \mid s_{t: t+c-1}, \tilde{g}_{t: t+c-1}\right) \propto-\frac{1}{2} \sum_{i=t}^{t+c-1}\left\|a_{i}-\mu^{l o}\left(s_{i}, \tilde{g}_{i}\right)\right\|_{2}^{2}+\mathrm{const}$$
+
+### Skill(option)-selected HRL
+1. <b>Between MDPs and semi-MDPs: A framework for temporal abstraction in reinforcement learning(Sutton, 1999)</b>
+   - **Motivation**Human decision making routinely involves choice among temporally extended courses of action over a broad range of time scales
+   - **Semi-MDP(option-to-option)**
+   ![](2021-03-28-10-45-48.png)
+   
+2. <b>The option-critic framework</b>
+   - **Motivation** Internal policies and the termination conditions of options, in tandem with the policy over options, and without the need to provide any additional rewards or subgoals
+   - **Architecture**
+   ![](2021-03-28-10-52-46.png)
+   - **option-value function**
+   $$Q_{\Omega}(s, \omega)=\sum_{a} \pi_{\omega, \theta}(a \mid s) Q_{U}(s, \omega, a)$$
+   - **state-action value function**
+   $$Q_{U}(s, \omega, a)=r(s, a)+\gamma \sum_{s^{\prime}} \mathrm{P}\left(s^{\prime} \mid s, a\right) U\left(\omega, s^{\prime}\right)$$
+   $$U\left(\omega, s^{\prime}\right)=\left(1-\beta_{\omega, \vartheta}\left(s^{\prime}\right)\right) Q_{\Omega}\left(s^{\prime}, \omega\right)+\beta_{\omega, \vartheta}\left(s^{\prime}\right) V_{\Omega}\left(s^{\prime}\right)$$
+   $$\mathrm{P}\left(s_{t+1}, \omega_{t+1} \mid s_{t}, \omega_{t}\right)=\sum_{a} \pi_{\omega_{t}, \theta}\left(a \mid s_{t}\right) \mathrm{P}\left(s_{t+1} \mid s_{t}, a\right)($$
+   $$\left.\left(1-\beta_{\omega_{t}, \vartheta}\left(s_{t+1}\right)\right) \mathbf{1}_{\omega_{t}=\omega_{t+1}}+\beta_{\omega_{t}, \vartheta}\left(s_{t+1}\right) \pi_{\Omega}\left(\omega_{t+1} \mid s_{t+1}\right)\right)$$
+3. <b>Learning to Interrupt: A Hierarchical Deep Reinforcement Learning Framework for Efficient Exploration</b>
+   - **state-value function**
+   ![](2021-03-28-11-06-15.png)
+   ![](2021-03-28-11-06-50.png)
+4. <b>STOCHASTIC NEURAL NETWORKS FOR HIERARCHICAL REINFORCEMENT LEARNING(2017, Pieter Abbeel)</b>
+   - **Motivation** Using Stochastic Neural Networks combined with an information-theoretic regularizer to pre-train a span of skills
+
